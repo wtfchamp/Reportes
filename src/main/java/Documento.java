@@ -36,18 +36,8 @@ public class Documento {
 
         PDPageContentStream contenido = new PDPageContentStream(documento, documento.getPage(0));
 
-        contenido.setNonStrokingColor(Color.LIGHT_GRAY);
-        contenido.addRect(200,650,100,100);
-        contenido.fill();
-
-        contenido.beginText();
-            contenido.setNonStrokingColor(Color.BLACK);
-            contenido.setFont(PDType1Font.TIMES_ROMAN, 12);
-            contenido.newLineAtOffset(25,500);
-            String texto = "Esta es una prueba de como escribir en pdf";
-            contenido.showText(texto);
-            contenido.endText();
-        contenido.close();
+        Celda celda = new Celda(10,10,"Prueba");
+        celda.creaCelda(25,500,Color.BLACK,contenido);
 
         documento.save("prueba.pdf");
         documento.close();
