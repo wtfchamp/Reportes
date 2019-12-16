@@ -5,7 +5,6 @@
       <stop stop-color="#8233A4" offset="0.5"></stop>
       <stop stop-color="#B34646" offset="1"></stop>
     </linearGradient>
-
     <filter id="insetShadow" filterUnits="userSpaceOnUse" x1="0%" y1="0%" x2="100%" y2="0%">
         <feFlood flood-color="#000" flood-opacity="1"></feFlood>
         <feComposite in2="SourceGraphic" operator="xor"></feComposite>

@@ -33,7 +33,7 @@ public class DatosUsuarioPDF {
         celda.setNextRenderer(new RoundedBorderCellRenderer(celda));
         tablaBorder.addCell(celda);
         tablaBorder.setBorder(Border.NO_BORDER);
-        tabla.setMarginBottom(30);
+        tablaBorder.setMarginBottom(30);
         return tablaBorder;
     }
 
