@@ -11,23 +11,23 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.svg.converter.SvgConverter;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TablaGrupoAlumnosPDF {
 
     /**
      * Metodo que crea una tabla
-     * @param tituloTabla Titulo
-     * @param colWidths Un arreglo de flotantes float[]
-     * @param rowSpan Numero de filas a unir o fusionar
-     * @param colSpan Numero de columnas a unir o fusionar
-     * @param pdf un objeto del tipo {@link PdfDocument}
-     * @return la tabla con todos los valores correspondientes
-     * @throws Exception para la lectura de la imagen SVG.
+     * @param pdf objeto del tipo {@link PdfDocument}
+     * @return una Tabla con los valores correspondientes.
+     * @throws Exception
      */
-    public Table creaTabla(String tituloTabla, float[] colWidths, int rowSpan, int colSpan , PdfDocument pdf) throws Exception {
+    public Table creaTabla(PdfDocument pdf) throws Exception {
+        float[] colWidths = {2, 1, 1, 1, 1, 1, 1, 1};
         Table tabla = new Table(colWidths);
-        Cell celda = this.crearCampo(rowSpan, colSpan);
-        celda.add(new Paragraph(tituloTabla).setFontColor(ColorConstants.WHITE));
+        Cell celda = this.crearCampo(1, 9);
+        celda.add(new Paragraph("Alumno de la clase").setFontColor(ColorConstants.WHITE));
         tabla.addCell(celda);
         tabla.addCell(this.crearCampo("Nombre", 1, 2, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Think-Develop and Share", 1, 1, new DeviceRgb(206, 204, 194)));

@@ -26,8 +26,7 @@ public class ReporteSquadronMain {
             TablaAlumnoPDF tablaAlumnoPDF = new TablaAlumnoPDF();
             documento.add(datosUsuarioPDF.creaDatosEncabezado(documentoPdf));
             documento.add(tablaGruposPDF.creaTabla(9));
-            float[] colWidthsAlumnos = {2, 1, 1, 1, 1, 1, 1, 1};
-            documento.add(tablaGrupoAlumnosPDF.creaTabla("Alumnos de la clase", colWidthsAlumnos, 1, 8, documentoPdf));
+            documento.add(tablaGrupoAlumnosPDF.creaTabla("Alumnos de la clase", 1, 8, documentoPdf));
             documento.add(tablaAlumnoPDF.creaTabla(documentoPdf));
         }catch (Exception e){
             System.out.println(e.getMessage());
