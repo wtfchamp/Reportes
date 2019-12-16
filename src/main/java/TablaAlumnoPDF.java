@@ -39,16 +39,15 @@ public class TablaAlumnoPDF {
         tabla.addCell(this.crearCampo("Complete Prayers", 1,1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Order Prayer", 1,1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Comprehension Match", 1,1, new DeviceRgb(206, 204, 194)));
-        tabla.addCell(this.crearCampo("", 1,8, new DeviceRgb(206, 204, 194)).add(this.creaImagen(58,pdf)));
         for (int i = 0; i < 5; i++) {
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(20,pdf)));
+            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen("forbidden.svg",pdf)));
             tabla.addCell(this.crearCampo("12/12/2019", 1, 1, new DeviceRgb(206, 204, 194)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(30.5f,pdf)));
+            tabla.addCell(this.crearCampo("30 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(30,pdf)));
             tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(40.10f,pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(50,pdf)));
+            tabla.addCell(this.crearCampo("89 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(40,pdf)));
+            tabla.addCell(this.crearCampo("100 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(89,pdf)));
             tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(62.5f,pdf)));
+            tabla.addCell(this.crearCampo("62 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(62,pdf)));
         }
         tabla.useAllAvailableWidth();
         return tabla;
@@ -56,7 +55,7 @@ public class TablaAlumnoPDF {
 
     /**
      * Metodo que crea las celdas para los nombres de las columnas.
-     * @param valorCampo El nombre de la columna
+     * @param valorCampo El nombre de la columnax
      * @param rowSpan Numero de filas a unir o fusionar
      * @param colSpan Numero de columnas a unir o fusionar
      * @return una Celda con el campo correspondiente.
@@ -98,9 +97,9 @@ public class TablaAlumnoPDF {
             System.out.println(e.getMessage());
         }
         File svg;
-        svg = new File("progressBar.svg");
+        svg = new File("progressBar.xml");
         Image imgSVG = SvgConverter.convertToImage(svg.toURI().toURL().openStream(), pdf);
-        imgSVG.setWidth(45);
+        //imgSVG.setMarginTop(5);
         return imgSVG;
     }
 
@@ -108,22 +107,19 @@ public class TablaAlumnoPDF {
         File svg;
         svg = new File(urlArchivo);
         Image imgSVG = SvgConverter.convertToImage(svg.toURI().toURL().openStream(), pdf);
-        imgSVG.setMarginLeft(22);
+        imgSVG.setMarginLeft(15);
         return imgSVG;
     }
 
-    private void progressBar(float progressBarSize ) throws ParserConfigurationException, IOException, SAXException, TransformerException{
+    private void progressBar(float progressBarSize) throws ParserConfigurationException, IOException, SAXException, TransformerException{
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document document = documentBuilder.parse(new File("progressBar.svg"));
-        NodeList elementos = document.getElementsByTagName("path");
+        Document document = documentBuilder.parse(new File("recta.svg"));
+        NodeList elementos = document.getElementsByTagName("rect");
         for (int i = 0; i < elementos.getLength(); i++) {
             Element el = (Element) elementos.item(i);
             if (el.getAttribute("id").equalsIgnoreCase("bar")){
-                el.setAttribute("d", "M20,5 ".concat(String.valueOf(progressBarSize))
-                        .concat(",5 A1,1 0 1 1 ")
-                        .concat(String.valueOf(progressBarSize))
-                        .concat(",35 L20,35 A1,1 0 1 1 20,5 z"));
+                el.setAttribute("width", String.valueOf(progressBarSize));
             }
         }
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -131,6 +127,5 @@ public class TablaAlumnoPDF {
         Source input = new DOMSource(document);
         transformer.transform(input,result);
     }
-
 
 }

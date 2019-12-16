@@ -1,32 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 82.5 40" width="100">
-  <defs>
-    <linearGradient gradientUnits="userSpaceOnUse" id="progressGradient" x1="0%" x2="100%" y1="0%" y2="0%">
-      <stop offset="0" stop-color="#376EA6"/>
-      <stop offset="0.5" stop-color="#8233A4"/>
-      <stop offset="1" stop-color="#B34646"/>
-    </linearGradient>
-
-    <filter filterUnits="userSpaceOnUse" id="insetShadow" x1="0%" x2="100%" y1="0%" y2="0%">
-        <feFlood flood-color="#000" flood-opacity="1"/>
-        <feComposite in2="SourceGraphic" operator="xor"/>
-        <feGaussianBlur stdDeviation="2"/>
-        <feOffset dx="0" dy="0" result="offsetblur"/>
-        <feFlood flood-color="#000" flood-opacity="1"/>
-        <feComposite in2="offsetblur" operator="atop"/>
-        <feComposite in2="SourceGraphic" operator="in"/>
-        <feMerge>
-            <feMergeNode in="SourceGraphic"/>
-            <feMergeNode/>
-        </feMerge>
-    </filter>
-  </defs>
-  <!--Modificar solo dos valores del progressBar.svg 
-    en el path id="bar" 
-    command d="M20,5 **20**,5 A1,1 0 1 1 **20**,35 L20,35 A1,1 0 1 1 20,5 z"
-                        Solo modificar los valores iniciando 20 como 0%
-                        y 366.5 como 100%
-    Origin    d="M20,5 20,5 A1,1 0 1 1 20,35 L20,35 A1,1 0 1 1 20,5 z"
-  -->
-    <path d="M20,0 62.5,0 A1,1 0 1 1 62.5,40 L20,40 A1,1 0 1 1 20,0 z" fill="#fff" filter="url(#insetShadow)" id="container" stroke="#CCC" stroke-width="0"/>
-    <path d="M20,5 62.5,5 A1,1 0 1 1 62.5,35 L20,35 A1,1 0 1 1 20,5 z" fill="url(#progressGradient)" id="bar"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="10" viewBox="0 0 100 10" width="100">
+  <rect height="5" id="bar" rx="5" ry="5" width="62.0" x="0" y="0"/>
+  <style>
+      rect{
+        fill: #93dfdf;
+        stroke: none;
+      }
+  </style>
 </svg>
