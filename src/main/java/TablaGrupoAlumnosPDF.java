@@ -1,6 +1,5 @@
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
-import com.itextpdf.kernel.counter.SystemOutEventCounter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.borders.SolidBorder;
@@ -12,23 +11,20 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.svg.converter.SvgConverter;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class TablaGrupoAlumnosPDF {
 
     /**
-     * Metodo que retorna una tabla con los datos corepondientes
-     * @param tituloTabla Título de la tabla
-     * @param numColumnas Numero de columnas a crear
+     * Metodo que crea una tabla
+     * @param tituloTabla Titulo
+     * @param colWidths Un arreglo de flotantes float[]
      * @param rowSpan Numero de filas a unir o fusionar
      * @param colSpan Numero de columnas a unir o fusionar
-     * @param numFilas Numero de filas a mostrar por página.
-     * @return una Tabla con los datos de los alumnos de un solo grupo
+     * @param pdf un objeto del tipo {@link PdfDocument}
+     * @return la tabla con todos los valores correspondientes
+     * @throws Exception para la lectura de la imagen SVG.
      */
-    public Table creaTabla(String tituloTabla, float[] colWidths, int rowSpan, int colSpan , PdfDocument pdf) throws URISyntaxException, IOException, Exception {
+    public Table creaTabla(String tituloTabla, float[] colWidths, int rowSpan, int colSpan , PdfDocument pdf) throws Exception {
         Table tabla = new Table(colWidths);
         Cell celda = this.crearCampo(rowSpan, colSpan);
         celda.add(new Paragraph(tituloTabla).setFontColor(ColorConstants.WHITE));
@@ -80,10 +76,10 @@ public class TablaGrupoAlumnosPDF {
     }
 
     /**
-     *
-     * @param rowSpan
-     * @param colSpan
-     * @return
+     * Metodo que crea una celda para el titulo de la tabla
+     * @param rowSpan numero de filas a unir o fusionar
+     * @param colSpan numero de filas a unir o fusionar
+     * @return una nueva Celda con el valor correspondiente.
      */
     private Cell crearCampo(int rowSpan, int colSpan){
         Cell celda = new Cell(rowSpan,colSpan)

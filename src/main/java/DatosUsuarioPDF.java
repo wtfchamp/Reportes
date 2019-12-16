@@ -1,21 +1,23 @@
-import com.itextpdf.kernel.colors.Color;
-import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.BorderRadius;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.svg.converter.SvgConverter;
 
 import java.io.File;
 
 public class DatosUsuarioPDF {
+
+    /**
+     * Metodo que crea una tabla
+     * @param pdf un objeto del tipo {@link PdfDocument}
+     * @return una nueva tabla con sus valores correspondientes.
+     * @throws Exception Error de lectura de archivo
+     */
     public Table creaDatosEncabezado(PdfDocument pdf) throws Exception{
         Table tabla = new Table(new float[]{1,1});
         Table tablaBorder = new Table(1);
@@ -37,9 +39,14 @@ public class DatosUsuarioPDF {
         return tablaBorder;
     }
 
-    public Table creaInfo(){
-        return new Table(2);
-    }
+    /**
+     * Metodo que crea una celda para los datos del usuario
+     * @param valorCampo Datos para llenar los campos de la celda
+     * @param rowSpan numero de filas a unir o fusionar
+     * @param colSpan numero de columnas a unir o fusionar
+     * @param color un objeto del tipo {@link DeviceRgb}
+     * @return una nueva Celda con el valor correspondiente.
+     */
     private Cell creaCelda(String valorCampo, int rowSpan, int colSpan, DeviceRgb color){
         Cell celda = new Cell(rowSpan,colSpan)
                 .setTextAlignment(TextAlignment.LEFT)

@@ -19,7 +19,7 @@ public class ReporteSquadronMain {
             TablaGrupoAlumnosPDF tablaGrupoAlumnosPDF = new TablaGrupoAlumnosPDF();
             DatosUsuarioPDF datosUsuarioPDF = new DatosUsuarioPDF();
             TablaAlumnoPDF tablaAlumnoPDF = new TablaAlumnoPDF();
-            documento.add(tablaGruposPDF.creaTabla("Grupos asignados para este ciclo escolar", 9, 1,9, 9));
+            documento.add(tablaGruposPDF.creaTabla(9));
             float[] colWidthsAlumnos = {2, 1, 1, 1, 1, 1, 1, 1};
             documento.add(tablaGrupoAlumnosPDF.creaTabla("Alumnos de la clase", colWidthsAlumnos, 1, 8, documentoPdf));
             documento.add(datosUsuarioPDF.creaDatosEncabezado(documentoPdf));

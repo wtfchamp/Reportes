@@ -22,10 +22,15 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.Date;
 
 public class TablaAlumnoPDF {
+
+    /**
+     * Metodo que crea una tabla
+     * @param pdf un objeto del tipo {@link PdfDocument}
+     * @return una tabla con sus valores correspondientes.
+     * @throws IOException Error de lectura de archivo.
+     */
     public Table creaTabla(PdfDocument pdf) throws IOException {
         Table tabla = new Table(8);
         Cell celda = this.crearCampo(1, 8);
@@ -54,7 +59,7 @@ public class TablaAlumnoPDF {
     }
 
     /**
-     * Metodo que crea las celdas para los nombres de las columnas.
+     * Metodo que crea las celdas para los nombres de las columnas y los valores de las tablas.
      * @param valorCampo El nombre de la columnax
      * @param rowSpan Numero de filas a unir o fusionar
      * @param colSpan Numero de columnas a unir o fusionar
@@ -74,10 +79,10 @@ public class TablaAlumnoPDF {
     }
 
     /**
-     *<
-     * @param rowSpan>
-     * @param colSpan
-     * @return
+     * Metodo que crea el titulo de la tabla
+     * @param rowSpan numero de filas a unir o fusionar
+     * @param colSpan numero de columnas a unir o fusionar
+     * @return una Celda con el valor correspondientes.
      */
     private Cell crearCampo(int rowSpan, int colSpan){
         Cell celda = new Cell(rowSpan,colSpan)
@@ -90,6 +95,13 @@ public class TablaAlumnoPDF {
         return celda;
     }
 
+    /**
+     * Metodo que convierte un archivo xml en una imagen para la tabla
+     * @param progressBarSize el valor en flotante
+     * @param pdf un objeto del tipo {@link PdfDocument}
+     * @return una imagen.
+     * @throws IOException
+     */
     private Image creaImagen(float progressBarSize, PdfDocument pdf) throws IOException{
         try{
          this.progressBar(progressBarSize);
@@ -103,6 +115,13 @@ public class TablaAlumnoPDF {
         return imgSVG;
     }
 
+    /**
+     * Metodo que lee una imagen SVG y la convierte en Imagen para el documento
+      * @param urlArchivo direccion del archivo
+     * @param pdf un objeto del tipo {@link PdfDocument}
+     * @return una imagen.
+     * @throws IOException
+     */
     private Image creaImagen(String urlArchivo, PdfDocument pdf) throws IOException{
         File svg;
         svg = new File(urlArchivo);
@@ -111,6 +130,15 @@ public class TablaAlumnoPDF {
         return imgSVG;
     }
 
+
+    /**
+     * Metodo que lee una imagen SVG y la convierte en un archivo XML
+     * @param progressBarSize valor en flotante
+     * @throws ParserConfigurationException Error de parseo SVG-XML
+     * @throws IOException Error al abrir los archivos.
+     * @throws SAXException Error crear el Documento.
+     * @throws TransformerException Error al guardar los datos.
+     */
     private void progressBar(float progressBarSize) throws ParserConfigurationException, IOException, SAXException, TransformerException{
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
