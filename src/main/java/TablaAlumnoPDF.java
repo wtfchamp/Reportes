@@ -51,7 +51,7 @@ public class TablaAlumnoPDF {
             tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
             tabla.addCell(this.crearCampo("89 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(40,pdf)));
             tabla.addCell(this.crearCampo("100 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(89,pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 2255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
             tabla.addCell(this.crearCampo("62 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(62,pdf)));
         }
         tabla.useAllAvailableWidth();
