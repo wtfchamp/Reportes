@@ -1,3 +1,4 @@
+import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -15,14 +16,18 @@ public class ReporteSquadronMain {
     public void creaPDF(String dir) throws IOException {
         PdfDocument documentoPdf = new PdfDocument(new PdfWriter(dir));
         try(Document documento = new Document(documentoPdf)){
+            documento.setMargins(documento.getTopMargin()-20, documento.getRightMargin()-10, documento.getBottomMargin()-75,
+                        documento.getLeftMargin()-10);
+            EventoPagina evento = new EventoPagina(documento, documentoPdf);
+            documentoPdf.addEventHandler(PdfDocumentEvent.END_PAGE, evento);
             TablaGruposPDF tablaGruposPDF = new TablaGruposPDF();
             TablaGrupoAlumnosPDF tablaGrupoAlumnosPDF = new TablaGrupoAlumnosPDF();
             DatosUsuarioPDF datosUsuarioPDF = new DatosUsuarioPDF();
             TablaAlumnoPDF tablaAlumnoPDF = new TablaAlumnoPDF();
+            documento.add(datosUsuarioPDF.creaDatosEncabezado(documentoPdf));
             documento.add(tablaGruposPDF.creaTabla(9));
             float[] colWidthsAlumnos = {2, 1, 1, 1, 1, 1, 1, 1};
             documento.add(tablaGrupoAlumnosPDF.creaTabla("Alumnos de la clase", colWidthsAlumnos, 1, 8, documentoPdf));
-            documento.add(datosUsuarioPDF.creaDatosEncabezado(documentoPdf));
             documento.add(tablaAlumnoPDF.creaTabla(documentoPdf));
         }catch (Exception e){
             System.out.println(e.getMessage());
