@@ -26,7 +26,7 @@ public class ReporteSquadronMain {
             TablaAlumnoPDF tablaAlumnoPDF = new TablaAlumnoPDF();
             documento.add(datosUsuarioPDF.creaDatosEncabezado(documentoPdf));
             documento.add(tablaGruposPDF.creaTabla(9));
-            documento.add(tablaGrupoAlumnosPDF.creaTabla("Alumnos de la clase", 1, 8, documentoPdf));
+            documento.add(tablaGrupoAlumnosPDF.creaTabla(documentoPdf));
             documento.add(tablaAlumnoPDF.creaTabla(documentoPdf));
         }catch (Exception e){
             System.out.println(e.getMessage());
