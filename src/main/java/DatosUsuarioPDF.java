@@ -1,3 +1,4 @@
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.layout.borders.Border;
@@ -21,11 +22,9 @@ public class DatosUsuarioPDF {
     public Table creaDatosEncabezado(PdfDocument pdf) throws Exception{
         Table tabla = new Table(new float[]{1,1});
         Table tablaBorder = new Table(1);
-        File svg;
-        svg = new File("maestro.svg");
-        Image imgSVG = SvgConverter.convertToImage(svg.toURI().toURL().openStream(), pdf);
-        imgSVG.setWidth(30).setHeight(30).setMarginLeft(15);
-        tabla.addCell(this.creaCelda("", 2,1,  new DeviceRgb(0,0,0)).setBorder(Border.NO_BORDER).add(imgSVG));
+        Image imagen = new Image(ImageDataFactory.create("maestro.png"));
+        imagen.setWidth(30).setHeight(30).setMarginLeft(15);
+        tabla.addCell(this.creaCelda("", 2,1,  new DeviceRgb(0,0,0)).setBorder(Border.NO_BORDER).add(imagen));
         tabla.addCell(this.creaCelda("Jose Ismael Gonzalez Tzontecomani", 1,1, new DeviceRgb(0,0,0)).setBorder(Border.NO_BORDER));
         tabla.addCell(this.creaCelda("zonteco", 1, 1, new DeviceRgb(153, 153, 153)).setBorder(Border.NO_BORDER));
         tabla.addCell(this.creaCelda("Apodo: zonteco", 1, 2, new DeviceRgb(153, 153, 153)).setBorder(Border.NO_BORDER));
