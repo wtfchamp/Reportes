@@ -45,14 +45,14 @@ public class TablaAlumnoPDF {
         tabla.addCell(this.crearCampo("Order Prayer", 1,1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Comprehension Match", 1,1, new DeviceRgb(206, 204, 194)));
         for (int i = 0; i < 5; i++) {
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("12/12/2019", 1, 1, new DeviceRgb(206, 204, 194)));
-            tabla.addCell(this.crearCampo("30 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(30,pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("89 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(40,pdf)));
-            tabla.addCell(this.crearCampo("100 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(89,pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("62 %", 1, 1, new DeviceRgb(206, 204, 194)).add(this.creaImagen(62,pdf)));
+            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(this.crearCampo("12/12/2019", 1, 1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo("30 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(30,pdf)));
+            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(this.crearCampo("89 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(40,pdf)));
+            tabla.addCell(this.crearCampo("100 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(89,pdf)));
+            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 2255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(this.crearCampo("62 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(62,pdf)));
         }
         tabla.useAllAvailableWidth();
         return tabla;
