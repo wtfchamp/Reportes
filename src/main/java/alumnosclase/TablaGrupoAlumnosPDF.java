@@ -1,3 +1,6 @@
+package alumnosclase;
+
+import alumnosclase.TablaClaseModelo;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -23,7 +26,7 @@ public class TablaGrupoAlumnosPDF {
      * @return una Tabla con los valores correspondientes.
      * @throws Exception
      */
-    public Table creaTabla(PdfDocument pdf) throws Exception {
+    public Table creaTabla(PdfDocument pdf, List<TablaClaseModelo> tablaClaseModeloLista) throws Exception {
         float[] colWidths = {2, 1, 1, 1, 1, 1, 1, 1};
         Table tabla = new Table(colWidths);
         Cell celda = this.crearCampo(1, 9);
@@ -40,7 +43,7 @@ public class TablaGrupoAlumnosPDF {
         svg = new File("forbidden.svg");
         Image imgSVG = SvgConverter.convertToImage(svg.toURI().toURL().openStream(), pdf);
         imgSVG.setMarginLeft(22);
-        for (int i = 1; i<= 10; i++){
+        for (TablaClaseModelo tablaClaseModelo : tablaClaseModeloLista){
             tabla.addCell(this.crearCampo("Mario Maurio de Teresita Garcia Gonzalez",1,2, new DeviceRgb(255, 255, 255)));
             tabla.addCell(this.crearCampo("1/1/1",1,1, new DeviceRgb(255, 255, 255)));
             tabla.addCell(this.crearCampo("",1,1, new DeviceRgb(255, 255, 255)).add(imgSVG));

@@ -1,3 +1,6 @@
+package alumnoindividual;
+
+import alumnoindividual.TablaAlumnoModelo;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -9,6 +12,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.svg.converter.SvgConverter;
+import gruposasignados.TablaGruposModelo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -22,6 +26,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class TablaAlumnoPDF {
 
@@ -31,7 +36,7 @@ public class TablaAlumnoPDF {
      * @return una tabla con sus valores correspondientes.
      * @throws IOException Error de lectura de archivo.
      */
-    public Table creaTabla(PdfDocument pdf) throws IOException {
+    public Table creaTabla(PdfDocument pdf, List<TablaAlumnoModelo> tablaAlumnoModeloLista) throws IOException {
         Table tabla = new Table(8);
         Cell celda = this.crearCampo(1, 8);
         celda.add(new Paragraph("Filtros").setFontColor(ColorConstants.WHITE));
@@ -44,15 +49,30 @@ public class TablaAlumnoPDF {
         tabla.addCell(this.crearCampo("Complete Prayers", 1,1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Order Prayer", 1,1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Comprehension Match", 1,1, new DeviceRgb(206, 204, 194)));
-        for (int i = 0; i < 5; i++) {
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("12/12/2019", 1, 1, new DeviceRgb(255, 255, 255)));
-            tabla.addCell(this.crearCampo("30 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(30,pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("89 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(40,pdf)));
-            tabla.addCell(this.crearCampo("100 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(89,pdf)));
-            tabla.addCell(this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen("forbidden.svg",pdf)));
-            tabla.addCell(this.crearCampo("62 %", 1, 1, new DeviceRgb(255, 255, 255)).add(this.creaImagen(62,pdf)));
+        for (TablaAlumnoModelo tablaAlumnoModelo : tablaAlumnoModeloLista){
+            tabla.addCell(
+                    this.crearCampo(tablaAlumnoModelo.getImagenTarea(), 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(
+                    this.crearCampo(tablaAlumnoModelo.getAsignacion(), 1, 1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(
+                    this.crearCampo(String.valueOf(tablaAlumnoModelo.getWordGame()).concat("%"), 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen(tablaAlumnoModelo.getWordGame(),pdf)));
+            tabla.addCell(
+                    this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(
+                    this.crearCampo(String.valueOf(tablaAlumnoModelo.getMatchImage()).concat("%"), 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen(tablaAlumnoModelo.getMatchImage(),pdf)));
+            tabla.addCell(
+                    this.crearCampo(String.valueOf(tablaAlumnoModelo.getCompletePrayers()).concat("%"), 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen(tablaAlumnoModelo.getCompletePrayers(),pdf)));
+            tabla.addCell(
+                    this.crearCampo("", 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen("forbidden.svg",pdf)));
+            tabla.addCell(
+                    this.crearCampo(String.valueOf(tablaAlumnoModelo.getComprehensionMatch()).concat("%"), 1, 1, new DeviceRgb(255, 255, 255))
+                            .add(this.creaImagen(tablaAlumnoModelo.getComprehensionMatch(),pdf)));
         }
         tabla.useAllAvailableWidth();
         return tabla;

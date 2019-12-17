@@ -21,7 +21,7 @@ public class RoundedBorderCellRenderer extends CellRenderer {
                     getOccupiedAreaBBox().getY() + 1.5f,
                     getOccupiedAreaBBox().getWidth() - 3,
                     getOccupiedAreaBBox().getHeight() - 3,4)
-        .setStrokeColorRgb(0,168,236);
+        .setStrokeColorRgb(0,0,255);
         drawContext.getCanvas().stroke();
         super.draw(drawContext);
     }

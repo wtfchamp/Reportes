@@ -1,5 +1,7 @@
 package alumnosclase;
 
+import java.util.StringJoiner;
+
 public class TablaClaseModelo {
     private String nombre;
     private String thinkDevelopShare;
@@ -8,6 +10,9 @@ public class TablaClaseModelo {
     private String orderPrayer;
     private String mixMatch;
     private String completePrayers;
+
+    public TablaClaseModelo() {
+    }
 
     public TablaClaseModelo(String nombre, String thinkDevelopShare, String wordGame, String matchImage, String orderPrayer, String mixMatch, String completePrayers) {
         this.nombre = nombre;
@@ -30,7 +35,6 @@ public class TablaClaseModelo {
     public String getWordGame() {
         return wordGame;
     }
-
     public String getMatchImage() {
         return matchImage;
     }
@@ -73,5 +77,18 @@ public class TablaClaseModelo {
 
     public void setCompletePrayers(String completePrayers) {
         this.completePrayers = completePrayers;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", TablaClaseModelo.class.getSimpleName() + "[", "]")
+                .add("nombre='" + nombre + "'")
+                .add("thinkDevelopShare='" + thinkDevelopShare + "'")
+                .add("wordGame='" + wordGame + "'")
+                .add("matchImage='" + matchImage + "'")
+                .add("orderPrayer='" + orderPrayer + "'")
+                .add("mixMatch='" + mixMatch + "'")
+                .add("completePrayers='" + completePrayers + "'")
+                .toString();
     }
 }
