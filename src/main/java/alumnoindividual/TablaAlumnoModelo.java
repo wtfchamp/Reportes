@@ -3,7 +3,7 @@ package alumnoindividual;
 import java.util.StringJoiner;
 
 public class TablaAlumnoModelo {
-    private String imagenTarea;
+    private String preguntaDetonadora;
     private String asignacion;
     private float wordGame;
     private float imagenThinkDevelopShare;
@@ -15,8 +15,8 @@ public class TablaAlumnoModelo {
     public TablaAlumnoModelo() {
     }
 
-    public TablaAlumnoModelo(String imagenTarea, String asignacion, float wordGame, float imagenThinkDevelopShare, float matchImage, float completePrayers, float imagenOrderPrayer, float comprehensionMatch) {
-        this.imagenTarea = imagenTarea;
+    public TablaAlumnoModelo(String preguntaDetonadora, String asignacion, float wordGame, float imagenThinkDevelopShare, float matchImage, float completePrayers, float imagenOrderPrayer, float comprehensionMatch) {
+        this.preguntaDetonadora = preguntaDetonadora;
         this.asignacion = asignacion;
         this.wordGame = wordGame;
         this.imagenThinkDevelopShare = imagenThinkDevelopShare;
@@ -26,12 +26,12 @@ public class TablaAlumnoModelo {
         this.comprehensionMatch = comprehensionMatch;
     }
 
-    public String getImagenTarea() {
-        return imagenTarea;
+    public String getPreguntaDetonadora() {
+        return preguntaDetonadora;
     }
 
-    public void setImagenTarea(String imagenTarea) {
-        this.imagenTarea = imagenTarea;
+    public void setPreguntaDetonadora(String preguntaDetonadora) {
+        this.preguntaDetonadora = preguntaDetonadora;
     }
 
     public String getAsignacion() {
@@ -93,7 +93,7 @@ public class TablaAlumnoModelo {
     @Override
     public String toString() {
         return new StringJoiner(", ", TablaAlumnoModelo.class.getSimpleName() + "[", "]")
-                .add("imagenTarea='" + imagenTarea + "'")
+                .add("preguntaDetonadora='" + preguntaDetonadora + "'")
                 .add("asignacion='" + asignacion + "'")
                 .add("wordGame=" + wordGame)
                 .add("imagenThinkDevelopShare=" + imagenThinkDevelopShare)

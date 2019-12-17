@@ -51,8 +51,7 @@ public class TablaAlumnoPDF {
         tabla.addCell(this.crearCampo("Comprehension Match", 1,1, new DeviceRgb(206, 204, 194)));
         for (TablaAlumnoModelo tablaAlumnoModelo : tablaAlumnoModeloLista){
             tabla.addCell(
-                    this.crearCampo(tablaAlumnoModelo.getImagenTarea(), 1, 1, new DeviceRgb(255, 255, 255))
-                            .add(this.creaImagen("forbidden.svg",pdf)));
+                    this.crearCampo(tablaAlumnoModelo.getPreguntaDetonadora(), 1, 1, new DeviceRgb(255, 255, 255)));
             tabla.addCell(
                     this.crearCampo(tablaAlumnoModelo.getAsignacion(), 1, 1, new DeviceRgb(255, 255, 255)));
             tabla.addCell(
