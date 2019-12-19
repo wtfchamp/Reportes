@@ -11,12 +11,14 @@ import com.itextpdf.layout.property.TextAlignment;
 public class DatosUsuarioPDF {
 
     /**
-     * Metodo que crea una tabla
-     * @param pdf un objeto del tipo {@link PdfDocument}
-     * @return una nueva tabla con sus valores correspondientes.
-     * @throws Exception Error de lectura de archivo
+     * Metodo que crea los datos del usario
+     * @param nombre nombre del usuario
+     * @param apodo apodo del usuario
+     * @param correo correo del usuario
+     * @return una tabla con sus valores correspondientes
+     * @throws Exception error al abrir la imagen
      */
-    public Table creaDatosEncabezado(PdfDocument pdf, String nombre, String apodo, String correo) throws Exception{
+    public Table creaDatosEncabezado(String nombre, String apodo, String correo) throws Exception{
         Table tabla = new Table(new float[]{1,1});
         Table tablaBorder = new Table(1);
         Image imagen = new Image(ImageDataFactory.create("maestro.png"));
