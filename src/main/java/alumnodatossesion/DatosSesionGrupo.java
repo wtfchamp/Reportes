@@ -12,72 +12,91 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.svg.converter.SvgConverter;
 
-import java.lang.invoke.ConstantCallSite;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 public class DatosSesionGrupo {
 
-    public Table creaDatosSesioonGrupo(PdfDocument pdfDocument) throws MalformedURLException {
+    public Table creaDatosSesioonGrupo(PdfDocument pdfDocument) throws IOException {
         Table tabla = new Table(new float[] {1,1});
-        tabla.addCell(creaDatosAlumno(1,2));
-        tabla.addCell(creaDatosAlumno(1,2));
-        tabla.addCell(creaDatosAlumno(1,2));
-        tabla.addCell(creaDatosAlumno(1,2));
-        tabla.addCell(creaDatosAlumno(1,2));
-        tabla.addCell(creaDatosAlumno(1,2));
-        tabla.useAllAvailableWidth();
-        tabla.setBorder(new DashedBorder(new DeviceRgb(0, 164, 157), 1));
+        tabla.startNewRow();
+        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+                .add(new Paragraph("www.e-squadron.com.mx")
+                        .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
+        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+                .add(new Paragraph("www.e-squadron.com.mx")
+                        .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
+        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+                .add(new Paragraph("www.e-squadron.com.mx")
+                        .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
+        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+                .add(new Paragraph("www.e-squadron.com.mx")
+                        .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
+        tabla.useAllAvailableWidth().setMarginTop(40);
         return tabla;
     }
 
-    private Cell creaDatosAlumno(int rowSpan, int colSpan) throws MalformedURLException {
+    private Cell creaDatosAlumno(int rowSpan, int colSpan, PdfDocument pdf, String nombreAlumno, String apodoProfesor, String apodoAlumno) throws IOException {
         Cell celda = new Cell(rowSpan,colSpan).setBorder(Border.NO_BORDER);
         Table tabla = new Table(new float[] {1,1});
-        celda.add(new Image(ImageDataFactory.create("Logo_escuadron.png")).setWidth(50).setHeight(30).setMarginLeft(110));
-        tabla.addCell(celda);
-        tabla.addCell(new Cell(rowSpan, colSpan).add(new Paragraph("El Mau").setFontColor(ColorConstants.WHITE).setBackgroundColor(new DeviceRgb(0, 164, 157))));
-        tabla.setBorder(Border.NO_BORDER);
-        tabla.useAllAvailableWidth();
-        celda = new Cell().setBorder(new DashedBorder(new DeviceRgb(0, 164, 157),1));
+        celda.add(new Image(ImageDataFactory.create("Logo_escuadron.png")).setWidth(70).setHeight(30).setMarginLeft(55).setMarginTop(20).setMarginBottom(20));
+        tabla.addCell(celda.setBorder(Border.NO_BORDER));
+        tabla.addCell(this.crearCampoNombreAlumno(new Paragraph(nombreAlumno)));
+        tabla.addCell(this.crearCampoMaestro(new Paragraph().add(new Image(ImageDataFactory.create("maestro.png")).setWidth(30).setHeight(30))));
+        tabla.addCell(this.crearCampoMaestro(new Paragraph("Teacher Username\n".concat(apodoProfesor))));
+        tabla.addCell(this.creaCampoAlumno(apodoAlumno));
+        tabla.addCell(this.creaCampoAlumno(pdf));
+        tabla.setWidth(200);
+        tabla.setMarginLeft(35);
+        celda = new Cell().setBorder(new DashedBorder(new DeviceRgb(0, 164, 234),1));
         celda.add(tabla);
         return celda;
     }
 
-    /**
-     * Metodo que crea las celdas para los nombres de las columnas y los valores de las tablas.
-     * @param valorCampo El nombre de la columnax
-     * @param rowSpan Numero de filas a unir o fusionar
-     * @param colSpan Numero de columnas a unir o fusionar
-     * @return una Celda con el campo correspondiente.
-     */
-    private Cell crearCampo(String valorCampo, int rowSpan, int colSpan, DeviceRgb color){
-        Cell celda = new Cell(rowSpan,colSpan)
+    private Cell crearCampoNombreAlumno(Paragraph nombre){
+        Cell celda = new Cell(1,2)
                 .setTextAlignment(TextAlignment.CENTER)
-                .setBackgroundColor(color)
-                .add(new Paragraph(valorCampo).setFontColor(ColorConstants.BLACK))
-                .setFontSize(7);
-        celda.setBorderBottom(new SolidBorder(ColorConstants.BLACK,1));
-        celda.setBorderLeft(Border.NO_BORDER);
-        celda.setBorderRight(Border.NO_BORDER);
-        celda.setBorderTop(Border.NO_BORDER);
+                .setFontColor(ColorConstants.WHITE)
+                .setBackgroundColor(new DeviceRgb(0,164,234));
+        celda.add(nombre);
+        celda.setBorder(Border.NO_BORDER);
         return celda;
     }
 
-    /**
-     * Metodo que crea el titulo de la tabla
-     * @param rowSpan numero de filas a unir o fusionar
-     * @param colSpan numero de columnas a unir o fusionar
-     * @return una Celda con el valor correspondientes.
-     */
-    private Cell crearCampo(int rowSpan, int colSpan){
-        Cell celda = new Cell(rowSpan,colSpan)
+    private Cell crearCampoMaestro(Paragraph apodo){
+        Cell celda = new Cell(1,1)
+                .setTextAlignment(TextAlignment.CENTER);
+        celda.add(apodo);
+        celda.setBorderBottom(new DashedBorder(new DeviceRgb(0,164,234),1))
+                .setBorderLeft(Border.NO_BORDER)
+                .setBorderRight(Border.NO_BORDER)
+                .setBorderTop(Border.NO_BORDER);
+        return celda;
+    }
+
+    private Cell creaCampoAlumno(String apodoAlumno) throws MalformedURLException {
+        Cell celda = new Cell(1,1)
                 .setTextAlignment(TextAlignment.CENTER)
-                .setBackgroundColor(new DeviceRgb(0, 164, 157));
-        celda.setBorderBottom(new SolidBorder(ColorConstants.WHITE,5));
-        celda.setBorderLeft(Border.NO_BORDER);
-        celda.setBorderRight(Border.NO_BORDER);
-        celda.setBorderTop(Border.NO_BORDER);
+                .setBorder(Border.NO_BORDER);
+        Paragraph texto = new Paragraph("Student\n")
+                .add(new Image(ImageDataFactory.create("maestro.png")).setWidth(30).setHeight(30));
+        texto.add("\n".concat(apodoAlumno));
+        celda.add(texto);
+        return celda;
+    }
+
+    private Cell creaCampoAlumno(PdfDocument pdf) throws IOException{
+        Cell celda = new Cell(1,1)
+                .setTextAlignment(TextAlignment.CENTER)
+                .setBorder(Border.NO_BORDER);
+        Paragraph texto = new Paragraph("Password\n")
+                .add(SvgConverter.convertToImage(new File("planeta1.svg").toURI().toURL().openStream(), pdf).setWidth(30).setHeight(30))
+                .add("\t")
+                .add(SvgConverter.convertToImage(new File("nave1.svg").toURI().toURL().openStream(), pdf).setWidth(30).setHeight(30));
+        celda.add(texto);
         return celda;
     }
 }

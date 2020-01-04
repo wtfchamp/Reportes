@@ -4,11 +4,15 @@ import alumnoindividual.TablaAlumnoPDF;
 import alumnosclase.TablaClaseModelo;
 import alumnosclase.TablaGrupoAlumnosPDF;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.AreaBreakType;
 import com.itextpdf.layout.property.TextAlignment;
+import datosusuario.DatosUsuarioPDF;
 import gruposasignados.TablaGruposModelo;
 import gruposasignados.TablaGruposPDF;
 
@@ -48,6 +52,7 @@ public class ReporteSquadronMain {
             DatosUsuarioPDF datosUsuarioPDF = new DatosUsuarioPDF();
             documento.add(datosUsuarioPDF.creaDatosEncabezado( "Juan Reyes García", "Juanito", "juan.reyes@hotmail.com"));
             documento.add(tablaGruposPDF.creaTabla(tablaGruposModeloList));
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -126,7 +131,7 @@ public class ReporteSquadronMain {
                         "What do you usually do in your bedroom after class?", "01/01/2019",30.2f, 48, 67, 89, 90,67.5f
                 ));*/
         PdfDocument documentoPdf = new PdfDocument(new PdfWriter(dir4));
-        try(Document documento = new Document(documentoPdf)){
+        try(Document documento = new Document(documentoPdf, PageSize.A4)){
             documento.setMargins(documento.getTopMargin()-20,
                     documento.getRightMargin()-10,
                     documento.getBottomMargin()-75,
@@ -139,6 +144,8 @@ public class ReporteSquadronMain {
                     .setMarginBottom(20));
             documentoPdf.addEventHandler(PdfDocumentEvent.END_PAGE, evento);
             DatosSesionGrupo datosSesionGrupo = new DatosSesionGrupo();
+            documento.add(datosSesionGrupo.creaDatosSesioonGrupo(documentoPdf));
+            documento.add(new AreaBreak(AreaBreakType.NEXT_PAGE));
             documento.add(datosSesionGrupo.creaDatosSesioonGrupo(documentoPdf));
         }catch (Exception e){
             System.out.println(e.getMessage());

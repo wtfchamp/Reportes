@@ -1,3 +1,5 @@
+package datosusuario;
+
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.renderer.CellRenderer;
@@ -21,7 +23,7 @@ public class RoundedBorderCellRenderer extends CellRenderer {
                     getOccupiedAreaBBox().getY() + 1.5f,
                     getOccupiedAreaBBox().getWidth() - 3,
                     getOccupiedAreaBBox().getHeight() - 3,4)
-        .setStrokeColorRgb(0,0,255);
+        .setStrokeColorRgb(2f,16f,0f);
         drawContext.getCanvas().stroke();
         super.draw(drawContext);
     }
