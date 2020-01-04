@@ -23,35 +23,41 @@ public class DatosSesionGrupo {
     public Table creaDatosSesioonGrupo(PdfDocument pdfDocument) throws IOException {
         Table tabla = new Table(new float[] {1,1});
         tabla.startNewRow();
-        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+        tabla.addCell(creaDatosAlumno( pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
                 .add(new Paragraph("www.e-squadron.com.mx")
                         .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
-        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+        tabla.addCell(creaDatosAlumno( pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
                 .add(new Paragraph("www.e-squadron.com.mx")
                         .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
-        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+        tabla.addCell(creaDatosAlumno( pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
                 .add(new Paragraph("www.e-squadron.com.mx")
                         .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
-        tabla.addCell(creaDatosAlumno(1,2, pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
+        tabla.addCell(creaDatosAlumno( pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
                 .add(new Paragraph("www.e-squadron.com.mx")
                         .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
         tabla.useAllAvailableWidth().setMarginTop(40);
         return tabla;
     }
 
-    private Cell creaDatosAlumno(int rowSpan, int colSpan, PdfDocument pdf, String nombreAlumno, String apodoProfesor, String apodoAlumno) throws IOException {
-        Cell celda = new Cell(rowSpan,colSpan).setBorder(Border.NO_BORDER);
+    private Cell creaDatosAlumno(PdfDocument pdf, String nombreAlumno, String apodoProfesor, String apodoAlumno) throws IOException {
         Table tabla = new Table(new float[] {1,1});
-        celda.add(new Image(ImageDataFactory.create("Logo_escuadron.png")).setWidth(70).setHeight(30).setMarginLeft(55).setMarginTop(20).setMarginBottom(20));
-        tabla.addCell(celda.setBorder(Border.NO_BORDER));
+        tabla.addCell(new Cell(1,2)
+                .setTextAlignment(TextAlignment.CENTER)
+                .setBorder(Border.NO_BORDER)
+                .add(new Paragraph()
+                        .add(new Image(ImageDataFactory.create("Logo_escuadron.png"))
+                                .setWidth(70).setHeight(30)
+                                .setMarginTop(20).setMarginBottom(20))));
         tabla.addCell(this.crearCampoNombreAlumno(new Paragraph(nombreAlumno)));
-        tabla.addCell(this.crearCampoMaestro(new Paragraph().add(new Image(ImageDataFactory.create("maestro.png")).setWidth(30).setHeight(30))));
+        tabla.addCell(this.crearCampoMaestro(new Paragraph()
+                .add(new Image(ImageDataFactory.create("maestro.png"))
+                        .setWidth(30).setHeight(30))));
         tabla.addCell(this.crearCampoMaestro(new Paragraph("Teacher Username\n".concat(apodoProfesor))));
         tabla.addCell(this.creaCampoAlumno(apodoAlumno));
         tabla.addCell(this.creaCampoAlumno(pdf));
         tabla.setWidth(200);
         tabla.setMarginLeft(35);
-        celda = new Cell().setBorder(new DashedBorder(new DeviceRgb(0, 164, 234),1));
+        Cell celda = new Cell().setBorder(new DashedBorder(new DeviceRgb(0, 164, 234),1));
         celda.add(tabla);
         return celda;
     }
