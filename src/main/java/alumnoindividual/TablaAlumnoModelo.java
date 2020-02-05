@@ -5,24 +5,26 @@ import java.util.StringJoiner;
 public class TablaAlumnoModelo {
     private String preguntaDetonadora;
     private String asignacion;
+    private float trasncript;
     private float wordGame;
-    private float imagenThinkDevelopShare;
-    private float matchImage;
-    private float completePrayers;
-    private float imagenOrderPrayer;
+    private float ThinkDevelopShare;
+    private float mixMatch;
+    private float gapFilling;
+    private float whatHappened;
     private float comprehensionMatch;
 
     public TablaAlumnoModelo() {
     }
 
-    public TablaAlumnoModelo(String preguntaDetonadora, String asignacion, float wordGame, float imagenThinkDevelopShare, float matchImage, float completePrayers, float imagenOrderPrayer, float comprehensionMatch) {
+    public TablaAlumnoModelo(String preguntaDetonadora, String asignacion, float trasncript, float wordGame, float ThinkDevelopShare, float mixMatch, float gapFilling, float whatHappened, float comprehensionMatch) {
         this.preguntaDetonadora = preguntaDetonadora;
         this.asignacion = asignacion;
+        this.trasncript = trasncript;
         this.wordGame = wordGame;
-        this.imagenThinkDevelopShare = imagenThinkDevelopShare;
-        this.matchImage = matchImage;
-        this.completePrayers = completePrayers;
-        this.imagenOrderPrayer = imagenOrderPrayer;
+        this.ThinkDevelopShare = ThinkDevelopShare;
+        this.mixMatch = mixMatch;
+        this.gapFilling = gapFilling;
+        this.whatHappened = whatHappened;
         this.comprehensionMatch = comprehensionMatch;
     }
 
@@ -42,6 +44,14 @@ public class TablaAlumnoModelo {
         this.asignacion = asignacion;
     }
 
+    public float getTrasncript() {
+        return trasncript;
+    }
+
+    public void setTrasncript(float trasncript) {
+        this.trasncript = trasncript;
+    }
+
     public float getWordGame() {
         return wordGame;
     }
@@ -50,36 +60,36 @@ public class TablaAlumnoModelo {
         this.wordGame = wordGame;
     }
 
-    public float getImagenThinkDevelopShare() {
-        return imagenThinkDevelopShare;
+    public float getThinkDevelopShare() {
+        return ThinkDevelopShare;
     }
 
-    public void setImagenThinkDevelopShare(float imagenThinkDevelopShare) {
-        this.imagenThinkDevelopShare = imagenThinkDevelopShare;
+    public void setThinkDevelopShare(float thinkDevelopShare) {
+        ThinkDevelopShare = thinkDevelopShare;
     }
 
-    public float getMatchImage() {
-        return matchImage;
+    public float getMixMatch() {
+        return mixMatch;
     }
 
-    public void setMatchImage(float matchImage) {
-        this.matchImage = matchImage;
+    public void setMixMatch(float mixMatch) {
+        this.mixMatch = mixMatch;
     }
 
-    public float getCompletePrayers() {
-        return completePrayers;
+    public float getGapFilling() {
+        return gapFilling;
     }
 
-    public void setCompletePrayers(float completePrayers) {
-        this.completePrayers = completePrayers;
+    public void setGapFilling(float gapFilling) {
+        this.gapFilling = gapFilling;
     }
 
-    public float getImagenOrderPrayer() {
-        return imagenOrderPrayer;
+    public float getWhatHappened() {
+        return whatHappened;
     }
 
-    public void setImagenOrderPrayer(float imagenOrderPrayer) {
-        this.imagenOrderPrayer = imagenOrderPrayer;
+    public void setWhatHappened(float whatHappened) {
+        this.whatHappened = whatHappened;
     }
 
     public float getComprehensionMatch() {
@@ -95,11 +105,12 @@ public class TablaAlumnoModelo {
         return new StringJoiner(", ", TablaAlumnoModelo.class.getSimpleName() + "[", "]")
                 .add("preguntaDetonadora='" + preguntaDetonadora + "'")
                 .add("asignacion='" + asignacion + "'")
+                .add("trasncript=" + trasncript)
                 .add("wordGame=" + wordGame)
-                .add("imagenThinkDevelopShare=" + imagenThinkDevelopShare)
-                .add("matchImage=" + matchImage)
-                .add("completePrayers=" + completePrayers)
-                .add("imagenOrderPrayer=" + imagenOrderPrayer)
+                .add("ThinkDevelopShare=" + ThinkDevelopShare)
+                .add("mixMatch=" + mixMatch)
+                .add("gapFilling=" + gapFilling)
+                .add("whatHappened=" + whatHappened)
                 .add("comprehensionMatch=" + comprehensionMatch)
                 .toString();
     }

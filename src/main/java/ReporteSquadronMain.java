@@ -93,13 +93,13 @@ public class ReporteSquadronMain {
     public void creaPDF3(String dir3) throws IOException {
         tablaAlumnoModeloList.add(
                 new TablaAlumnoModelo(
-                        "What do you usually do in your bedroom after class?", "01/01/2019",30.2f, 48, 67, 89, 90,67.5f
+                        "What do you usually do in your bedroom after class?", "01/01/2019",30.6f,30.2f, 48, 67, 89, 90,67.5f
                 ));tablaAlumnoModeloList.add(
                 new TablaAlumnoModelo(
-                        "What do you usually do in your bedroom after class?", "01/01/2019",30.2f, 48, 67, 89, 90,67.5f
+                        "What do you usually do in your bedroom after class?", "01/01/2019",100,30.2f, 48, 67, 89, 90,67.5f
                 ));tablaAlumnoModeloList.add(
                 new TablaAlumnoModelo(
-                        "What do you usually do in your bedroom after class?", "01/01/2019",30.2f, 48, 67, 89, 90,67.5f
+                        "What do you usually do in your bedroom after class?", "01/01/2019",30.6f,30.2f, 48, 67, 89, 90,67.5f
                 ));
         PdfDocument documentoPdf = new PdfDocument(new PdfWriter(dir3));
         try(Document documento = new Document(documentoPdf)){

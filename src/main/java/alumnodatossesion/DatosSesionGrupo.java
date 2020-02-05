@@ -35,7 +35,7 @@ public class DatosSesionGrupo {
         tabla.addCell(creaDatosAlumno( pdfDocument, "Jesús Reyes Juan Carlos Espinoza Sanchéz", "tzonteco", "juanito")
                 .add(new Paragraph("www.e-squadron.com.mx")
                         .setTextAlignment(TextAlignment.CENTER).setMarginTop(20).setMarginBottom(20)));
-        tabla.useAllAvailableWidth().setMarginTop(40);
+        tabla.useAllAvailableWidth().setMarginTop(30);
         return tabla;
     }
 
@@ -55,10 +55,19 @@ public class DatosSesionGrupo {
         tabla.addCell(this.crearCampoMaestro(new Paragraph("Teacher Username\n".concat(apodoProfesor))));
         tabla.addCell(this.creaCampoAlumno(apodoAlumno));
         tabla.addCell(this.creaCampoAlumno(pdf));
+        tabla.addCell(this.creaGalaxiaCampo("1"));
         tabla.setWidth(200);
         tabla.setMarginLeft(35);
         Cell celda = new Cell().setBorder(new DashedBorder(new DeviceRgb(0, 164, 234),1));
         celda.add(tabla);
+        return celda;
+    }
+
+    private Cell creaGalaxiaCampo(String galaxia){
+        Cell celda = new Cell(1,2);
+        celda.add(new Paragraph("Galaxia: \n".concat(galaxia)));
+        celda.setTextAlignment(TextAlignment.CENTER);
+        celda.setBorder(Border.NO_BORDER);
         return celda;
     }
 

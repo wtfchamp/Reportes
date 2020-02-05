@@ -1,6 +1,5 @@
 package alumnosclase;
 
-import alumnosclase.TablaClaseModelo;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -14,8 +13,6 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.svg.converter.SvgConverter;
 
 import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TablaGrupoAlumnosPDF {
