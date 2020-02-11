@@ -6,77 +6,78 @@ public class TablaClaseModelo {
     private String nombre;
     private String thinkDevelopShare;
     private String wordGame;
-    private String matchImage;
-    private String orderPrayer;
     private String mixMatch;
-    private String completePrayers;
+    private String whatHappened;
+    private String comprehensionMatch;
+    private String gapFilling;
 
     public TablaClaseModelo() {
     }
 
-    public TablaClaseModelo(String nombre, String thinkDevelopShare, String wordGame, String matchImage, String orderPrayer, String mixMatch, String completePrayers) {
+    public TablaClaseModelo(String nombre, String thinkDevelopShare, String wordGame, String mixMatch, String whatHappened, String comprehensionMatch, String gapFilling) {
         this.nombre = nombre;
         this.thinkDevelopShare = thinkDevelopShare;
         this.wordGame = wordGame;
-        this.matchImage = matchImage;
-        this.orderPrayer = orderPrayer;
         this.mixMatch = mixMatch;
-        this.completePrayers = completePrayers;
+        this.whatHappened = whatHappened;
+        this.comprehensionMatch = comprehensionMatch;
+        this.gapFilling = gapFilling;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public String getThinkDevelopShare() {
-        return thinkDevelopShare;
-    }
-
-    public String getWordGame() {
-        return wordGame;
-    }
-    public String getMatchImage() {
-        return matchImage;
-    }
-
-    public String getOrderPrayer() {
-        return orderPrayer;
-    }
-
-    public String getMixMatch() {
-        return mixMatch;
-    }
-
-    public String getCompletePrayers() {
-        return completePrayers;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getThinkDevelopShare() {
+        return thinkDevelopShare;
     }
 
     public void setThinkDevelopShare(String thinkDevelopShare) {
         this.thinkDevelopShare = thinkDevelopShare;
     }
 
+    public String getWordGame() {
+        return wordGame;
+    }
+
     public void setWordGame(String wordGame) {
         this.wordGame = wordGame;
     }
 
-    public void setMatchImage(String matchImage) {
-        this.matchImage = matchImage;
-    }
-
-    public void setOrderPrayer(String orderPrayer) {
-        this.orderPrayer = orderPrayer;
+    public String getMixMatch() {
+        return mixMatch;
     }
 
     public void setMixMatch(String mixMatch) {
         this.mixMatch = mixMatch;
     }
 
-    public void setCompletePrayers(String completePrayers) {
-        this.completePrayers = completePrayers;
+    public String getWhatHappened() {
+        return whatHappened;
+    }
+
+    public void setWhatHappened(String whatHappened) {
+        this.whatHappened = whatHappened;
+    }
+
+    public String getComprehensionMatch() {
+        return comprehensionMatch;
+    }
+
+    public void setComprehensionMatch(String comprehensionMatch) {
+        this.comprehensionMatch = comprehensionMatch;
+    }
+
+    public String getGapFilling() {
+        return gapFilling;
+    }
+
+    public void setGapFilling(String gapFilling) {
+        this.gapFilling = gapFilling;
     }
 
     @Override
@@ -85,10 +86,10 @@ public class TablaClaseModelo {
                 .add("nombre='" + nombre + "'")
                 .add("thinkDevelopShare='" + thinkDevelopShare + "'")
                 .add("wordGame='" + wordGame + "'")
-                .add("matchImage='" + matchImage + "'")
-                .add("orderPrayer='" + orderPrayer + "'")
                 .add("mixMatch='" + mixMatch + "'")
-                .add("completePrayers='" + completePrayers + "'")
+                .add("whatHappened='" + whatHappened + "'")
+                .add("comprehensionMatch='" + comprehensionMatch + "'")
+                .add("gapFilling='" + gapFilling + "'")
                 .toString();
     }
 }

@@ -1,6 +1,5 @@
 package alumnoindividual;
 
-import alumnoindividual.TablaAlumnoModelo;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
@@ -13,14 +12,11 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.svg.converter.SvgConverter;
-import com.sun.prism.impl.ps.CachingEllipseRep;
-import gruposasignados.TablaGruposModelo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.imageio.metadata.IIOMetadataController;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -56,11 +52,11 @@ public class TablaAlumnoPDF {
         tabla.addCell(this.crearCampo("What Happened", 1,1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Comprehension\nMatch", 1,1, new DeviceRgb(206, 204, 194)));
         for (TablaAlumnoModelo tablaAlumnoModelo : tablaAlumnoModeloLista){
-            tabla.addCell(this.tareaImagen("1XPG2xEEOmo"));
+            tabla.addCell(this.tareaImagen(tablaAlumnoModelo.getIdVideo()));
+            tabla.addCell(this.crearCampo(tablaAlumnoModelo.getAsignacion(), 1, 1, new DeviceRgb(255, 255, 255)));
             tabla.addCell(
-                    this.crearCampo(tablaAlumnoModelo.getAsignacion(), 1, 1, new DeviceRgb(255, 255, 255)));
-            tabla.addCell(
-                    this.crearCampo(String.valueOf(tablaAlumnoModelo.getTrasncript()).concat("%\n"), 1, 1, new DeviceRgb(255, 255, 255),tablaAlumnoModelo.getTrasncript(),pdf));
+                    (tablaAlumnoModelo.getTrasncript() < 0) ? this.creaImagen("forbidden.svg",pdf) : this.crearCampo(String.valueOf(tablaAlumnoModelo.getTrasncript()).concat("%\n"), 1, 1, new DeviceRgb(255, 255, 255),tablaAlumnoModelo.getTrasncript(),pdf)
+            );
             tabla.addCell(
                     this.crearCampo(String.valueOf(tablaAlumnoModelo.getWordGame()).concat("%\n"), 1, 1, new DeviceRgb(255, 255, 255),tablaAlumnoModelo.getWordGame(),pdf));
             tabla.addCell(
@@ -75,7 +71,6 @@ public class TablaAlumnoPDF {
                     this.crearCampo(String.valueOf(tablaAlumnoModelo.getComprehensionMatch()).concat("%\n"), 1, 1, new DeviceRgb(255, 255, 255),tablaAlumnoModelo.getComprehensionMatch(),pdf));
         }
         tabla.useAllAvailableWidth();
-        tablaAlumnoModeloLista.forEach(System.out::println);
         return tabla;
     }
 
@@ -174,12 +169,16 @@ public class TablaAlumnoPDF {
      * @return una imagen.
      * @throws IOException
      */
-    private Image creaImagen(String urlArchivo, PdfDocument pdf) throws IOException{
+    private Cell creaImagen(String urlArchivo, PdfDocument pdf) throws IOException{
         File svg;
         svg = new File(urlArchivo);
         Image imgSVG = SvgConverter.convertToImage(svg.toURI().toURL().openStream(), pdf);
-        imgSVG.setMarginLeft(15);
-        return imgSVG;
+        Cell celda = new Cell().setTextAlignment(TextAlignment.CENTER).add(new Paragraph("").add(imgSVG).setTextAlignment(TextAlignment.CENTER)).setBackgroundColor(ColorConstants.WHITE);
+        celda.setBorderBottom(new SolidBorder(ColorConstants.BLACK,1));
+        celda.setBorderLeft(Border.NO_BORDER);
+        celda.setBorderRight(Border.NO_BORDER);
+        celda.setBorderTop(Border.NO_BORDER);
+        return celda;
     }
 
 

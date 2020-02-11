@@ -32,22 +32,22 @@ public class TablaGrupoAlumnosPDF {
         tabla.addCell(this.crearCampo("Nombre", 1, 2, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Think-Develop and Share", 1, 1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Word Game", 1, 1, new DeviceRgb(206, 204, 194)));
-        tabla.addCell(this.crearCampo("Match Image", 1, 1, new DeviceRgb(206, 204, 194)));
-        tabla.addCell(this.crearCampo("Order Prayer", 1, 1, new DeviceRgb(206, 204, 194)));
         tabla.addCell(this.crearCampo("Mix & Match", 1, 1, new DeviceRgb(206, 204, 194)));
-        tabla.addCell(this.crearCampo("Complete Prayers", 1, 1, new DeviceRgb(206, 204, 194)));
+        tabla.addCell(this.crearCampo("What Happened?", 1, 1, new DeviceRgb(206, 204, 194)));
+        tabla.addCell(this.crearCampo("Comprehesion Match", 1, 1, new DeviceRgb(206, 204, 194)));
+        tabla.addCell(this.crearCampo("Gap Filling", 1, 1, new DeviceRgb(206, 204, 194)));
         File svg;
         svg = new File("forbidden.svg");
         Image imgSVG = SvgConverter.convertToImage(svg.toURI().toURL().openStream(), pdf);
-        imgSVG.setMarginLeft(22);
+        imgSVG.setWidth(10).setHeight(10);
         for (TablaClaseModelo tablaClaseModelo : tablaClaseModeloLista){
-            tabla.addCell(this.crearCampo("Mario Maurio de Teresita Garcia Gonzalez",1,2, new DeviceRgb(255, 255, 255)));
-            tabla.addCell(this.crearCampo("1/1/1",1,1, new DeviceRgb(255, 255, 255)));
-            tabla.addCell(this.crearCampo("",1,1, new DeviceRgb(255, 255, 255)).add(imgSVG));
-            tabla.addCell(this.crearCampo("5/5",1,1, new DeviceRgb(255, 255, 255)));
-            tabla.addCell(this.crearCampo("",1,1, new DeviceRgb(255, 255, 255)).add(imgSVG));
-            tabla.addCell(this.crearCampo("6/6",1,1, new DeviceRgb(255, 255, 255)));
-            tabla.addCell(this.crearCampo("6/6",1,1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getNombre(),1,2, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getThinkDevelopShare(),1,1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getWordGame(),1,1, new DeviceRgb(255, 255, 255)).add(imgSVG));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getMixMatch(),1,1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getWhatHappened(),1,1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getComprehensionMatch(),1,1, new DeviceRgb(255, 255, 255)));
+            tabla.addCell(this.crearCampo(tablaClaseModelo.getGapFilling(),1,1, new DeviceRgb(255, 255, 255)));
         }
         tabla.setBorder(Border.NO_BORDER);
         tabla.setMarginBottom(20);

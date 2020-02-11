@@ -3,7 +3,7 @@ package alumnoindividual;
 import java.util.StringJoiner;
 
 public class TablaAlumnoModelo {
-    private String preguntaDetonadora;
+    private String idVideo;
     private String asignacion;
     private float trasncript;
     private float wordGame;
@@ -16,8 +16,8 @@ public class TablaAlumnoModelo {
     public TablaAlumnoModelo() {
     }
 
-    public TablaAlumnoModelo(String preguntaDetonadora, String asignacion, float trasncript, float wordGame, float ThinkDevelopShare, float mixMatch, float gapFilling, float whatHappened, float comprehensionMatch) {
-        this.preguntaDetonadora = preguntaDetonadora;
+    public TablaAlumnoModelo(String idVideo, String asignacion, float trasncript, float wordGame, float ThinkDevelopShare, float mixMatch, float gapFilling, float whatHappened, float comprehensionMatch) {
+        this.idVideo = idVideo;
         this.asignacion = asignacion;
         this.trasncript = trasncript;
         this.wordGame = wordGame;
@@ -28,12 +28,12 @@ public class TablaAlumnoModelo {
         this.comprehensionMatch = comprehensionMatch;
     }
 
-    public String getPreguntaDetonadora() {
-        return preguntaDetonadora;
+    public String getIdVideo() {
+        return idVideo;
     }
 
-    public void setPreguntaDetonadora(String preguntaDetonadora) {
-        this.preguntaDetonadora = preguntaDetonadora;
+    public void setIdVideo(String idVideo) {
+        this.idVideo = idVideo;
     }
 
     public String getAsignacion() {
@@ -103,7 +103,7 @@ public class TablaAlumnoModelo {
     @Override
     public String toString() {
         return new StringJoiner(", ", TablaAlumnoModelo.class.getSimpleName() + "[", "]")
-                .add("preguntaDetonadora='" + preguntaDetonadora + "'")
+                .add("idVideo='" + idVideo + "'")
                 .add("asignacion='" + asignacion + "'")
                 .add("trasncript=" + trasncript)
                 .add("wordGame=" + wordGame)
